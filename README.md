@@ -1,8 +1,7 @@
 A small browser game: record yourself singing or saying something, play it back in reverse, and let guess what it was.
 
-python -m http.server 8000
 ```
-
+python -m http.server 8000
 Then open http://localhost:8000
 
 ## How it works
