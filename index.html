@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WhichSong?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>WhichSong?</h1>
+<p class="sub">Sing! Hear it played in reverse. </p>
+
+<section class="card" aria-label="Recorder">
+  <div class="reel">
+    <div class="disc" id="disc"></div>
+    <div>
+      <div class="status" id="status">Ready to record</div>
+      <div class="hint" id="hint">Pick a song, then sing a few seconds of it.</div>
+    </div>
+  </div>
+  <canvas id="wave" width="600" height="90" aria-label="Waveform"></canvas>
+  <div class="row">
+    <button class="primary" id="rec">Record</button>
+    <label class="btn">Record with phone app<input type="file" id="file2" accept="audio/*" capture></label>
+    <label class="btn">Upload audio<input type="file" id="file" accept="audio/*"></label>
+  </div>
+  <div class="msg" id="msg" role="status"></div>
+</section>
+
+<section class="card" aria-label="Playback">
+  <div class="row" style="margin-top:0">
+    <button id="playRev" disabled>Play backwards</button>
+    
+    <button id="playFwd" disabled>Reveal original</button>
+    <button id="stop" disabled>Stop</button>
+  </div>
+  <div class="row">
+    <button id="hit" disabled>They got it!</button>
+    <button id="miss" disabled>They didn’t</button>
+  </div>
+</section>
+
+<section class="card score" aria-label="Score">
+  <span>Guessed</span><b id="sh">0</b><span>of</span><b id="st">0</b>
+  <button id="reset" style="margin-left:auto">Reset score</button>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
