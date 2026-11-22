@@ -1,4 +1,4 @@
-A small browser game: record yourself singing or saying something, play it back in reverse, and let your friends guess what it was.
+A small browser game: record yourself singing or saying something, play it back in reverse, and let guess what it was.
 
 python -m http.server 8000
 ```
