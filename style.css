@@ -1,7 +1,7 @@
-:root{--bg:#f3efe6;--ink:#1c1b3a;--card:#fffdf8;--line:#d9d2c2;--hot:#ff3d6e;--sun:#ffc828;--mute:#6c6a85;--wave:#1c1b3a;
+:root{--bg:#f3efe6;--ink:#1c1b3a;--card:#fffdf8;--line:#d9d2c2;--hot:#c42b51;--sun:#ffc828;--mute:#6c6a85;--wave:#1c1b3a;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14132b;--ink:#f3efe6;--card:#1d1c3c;--line:#34325c;--mute:#a09ec4;--wave:#f3efe6}}
-:root[data-theme="dark"]{--bg:#14132b;--ink:#f3efe6;--card:#1d1c3c;--line:#34325c;--mute:#a09ec4;--wave:#f3efe6}
+:root[data-theme="dark"]{--bg:#14132b;--ink:#e6b84e;--card:#1d1c3c;--line:#34325c;--mute:#a09ec4;--wave:#f3efe6}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;line-height:1.5}
@@ -23,7 +23,7 @@ button,label.btn{font:inherit;font-weight:700;cursor:pointer;border:2px solid va
 button:hover:not(:disabled),label.btn:hover{background:var(--sun);color:#1c1b3a}
 button:disabled{opacity:.4;cursor:not-allowed}
 button:focus-visible,label.btn:focus-within{outline:3px solid var(--hot);outline-offset:2px}
-.primary{background:var(--hot);color:#fff;border-color:var(--hot)}
+.primary{background:var(--hot);color:#2a2020;border-color:var(--hot)}
 .primary:hover:not(:disabled){background:var(--ink);color:var(--bg)}
 input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
 .score{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -31,3 +31,36 @@ input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
 .msg{color:var(--hot);font-weight:500;margin-top:10px;font-size:14px;min-height:1em}
 .tips{color:var(--mute);font-size:14px;padding-left:18px;margin:0}
 .tips li{margin-bottom:4px}
+
+/* wavy music background */
+body {
+  background:
+    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--hot) 16%, transparent), transparent 45%),
+    radial-gradient(circle at 85% 90%, color-mix(in srgb, var(--sun) 26%, transparent), transparent 45%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120' viewBox='0 0 400 120'%3E%3Cpath d='M0 60 Q100 0 200 60 T400 60' fill='none' stroke='%23ff3d6e' stroke-width='3' stroke-opacity='.7'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='160' viewBox='0 0 600 160'%3E%3Cpath d='M0 80 Q150 10 300 80 T600 80' fill='none' stroke='%236c6a85' stroke-width='3' stroke-opacity='.7'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='90' viewBox='0 0 300 90'%3E%3Cpath d='M0 45 Q75 0 150 45 T300 45' fill='none' stroke='%23ffc828' stroke-width='3' stroke-opacity='.7'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 400px 120px, 600px 160px, 300px 90px;
+  background-position: 0 15%, 0 55%, 0 88%;
+  animation: drift 40s linear infinite;
+}
+
+@keyframes drift {
+  to { background-position: -400px 15%, -600px 55%, -300px 88%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
